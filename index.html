@@ -14,7 +14,7 @@
 
     .container {
       width: 617px;
-      height: 428px;
+      height: 400px; /* updated height */
       position: relative;
       background-color: #EDE9F7;
       border-radius: 12px;
@@ -74,13 +74,13 @@
     .reveal-button,
     .next-button {
       position: absolute;
-      bottom: 15px;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       background-color: #532A8C;
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
@@ -97,7 +97,7 @@
   <div class="container">
     <!-- Card 1: Cleaning -->
     <div class="card active" id="card1">
-      <img class="image" src="https://i.imgur.com/hteXovH.png" alt="Cleaning">
+      <img class="image" src="https://i.imgur.com/m0OvE2V.png" alt="Cleaning">
       <div class="overlay" id="info1">
         <strong>Cleaning – Clinical Contact Surfaces</strong>
         <p>These surfaces are touched frequently during patient care and can become contaminated. They include:</p>
@@ -116,7 +116,7 @@
 
     <!-- Card 2: Disinfection -->
     <div class="card" id="card2">
-      <img class="image" src="https://i.imgur.com/m0OvE2V.png" alt="Disinfection">
+      <img class="image" src="https://i.imgur.com/hteXovH.png" alt="Disinfection">
       <div class="overlay" id="info2">
         <strong>Disinfection – Housekeeping Surfaces</strong>
         <p>These are less likely to be touched during treatment but still need routine cleaning. Examples include:</p>
@@ -133,7 +133,6 @@
   <script>
     function reveal(id) {
       document.getElementById(id).classList.add('active');
-      // Hide reveal button when overlay appears
       const button = document.querySelector(`#${id}`).parentElement.querySelector('.reveal-button');
       button.style.display = 'none';
     }
