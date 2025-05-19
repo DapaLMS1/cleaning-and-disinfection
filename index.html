@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleaning and Disinfection – Click & Reveal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F2F2F2;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 617px;
+      height: 428px;
+      position: relative;
+      background-color: #EDE9F7;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    .card.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(242, 242, 242, 0.95);
+      color: #333;
+      padding: 20px;
+      box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .overlay p {
+      margin-top: 10px;
+    }
+
+    .overlay.active {
+      display: flex;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reveal-button,
+    .next-button {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #532A8C;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .reveal-button:hover,
+    .next-button:hover {
+      background-color: #7ABF49;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Card 1: Cleaning -->
+    <div class="card active" id="card1">
+      <img class="image" src="https://i.imgur.com/hteXovH.png" alt="Cleaning">
+      <div class="overlay" id="info1">
+        <strong>Cleaning – Clinical Contact Surfaces</strong>
+        <p>These surfaces are touched frequently during patient care and can become contaminated. They include:</p>
+        <ul>
+          <li>Dental chair headrest and controls</li>
+          <li>Overhead light handles</li>
+          <li>Instrument trays and handpiece holders</li>
+          <li>Computer keyboard and mouse</li>
+          <li>Triplex syringe handles</li>
+          <li>Suction controls</li>
+        </ul>
+        <button class="next-button" onclick="showNextCard()">Next</button>
+      </div>
+      <button class="reveal-button" onclick="reveal('info1')">Click to Reveal</button>
+    </div>
+
+    <!-- Card 2: Disinfection -->
+    <div class="card" id="card2">
+      <img class="image" src="https://i.imgur.com/m0OvE2V.png" alt="Disinfection">
+      <div class="overlay" id="info2">
+        <strong>Disinfection – Housekeeping Surfaces</strong>
+        <p>These are less likely to be touched during treatment but still need routine cleaning. Examples include:</p>
+        <ul>
+          <li>Floors</li>
+          <li>Walls</li>
+          <li>Sinks</li>
+        </ul>
+      </div>
+      <button class="reveal-button" onclick="reveal('info2')">Click to Reveal</button>
+    </div>
+  </div>
+
+  <script>
+    function reveal(id) {
+      document.getElementById(id).classList.add('active');
+      // Hide reveal button when overlay appears
+      const button = document.querySelector(`#${id}`).parentElement.querySelector('.reveal-button');
+      button.style.display = 'none';
+    }
+
+    function showNextCard() {
+      document.getElementById('card1').classList.remove('active');
+      document.getElementById('card2').classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
